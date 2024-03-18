@@ -1,0 +1,39 @@
+﻿<Window x:Class="PL.Tabs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loacal="clr-namespace:PL"
+        xmlns:UC="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="Tabs" Height="700" Width="780"
+       WindowStartupLocation="CenterScreen"
+        >
+
+    <Grid>
+
+
+
+        <TabControl Name="TabControl" Margin="0,-26,0,26" BorderBrush="Transparent"    >
+            <TabItem Header="Drone" Background="SkyBlue" Margin="-2,24,-53,-46">
+               
+                <UC:Drones Margin="-2,48,-4,1"/>
+                
+            </TabItem>
+            <TabItem Header="parcel" Background="SkyBlue" Margin="52,24,-107,-46">
+                <UC:ParcelPL Margin="0,0,-6,0" Height="631" />
+            </TabItem>
+            <TabItem Header="Base station" Background="SkyBlue" Margin="106,23,-161,-46">
+               
+                <UC:BaseStationUC Margin="-1,0,-5,0" Height="572" Width="780" />
+               
+            </TabItem>
+            <TabItem Header="customer" Background="SkyBlue" Margin="160,23,-215,-45">
+                <UC:CustomerUC Height="568" Width="780" Margin="0,0,-6,0" />
+            </TabItem>
+        </TabControl>
+
+
+
+    </Grid>
+</Window>

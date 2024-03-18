@@ -1,0 +1,168 @@
+﻿<Window x:Class="PL.ParcelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="ParcelWindow" Height="450" Width="800"
+        
+          WindowStartupLocation="CenterScreen"
+        
+        >
+
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="FontFamily" Value="Berlin Sans FB"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="TextAlignment" Value="Left" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="34" />
+            <Setter Property="Width" Value="142" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+
+        </Style>
+
+
+        <Style TargetType="ComboBox">
+
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Width" Value="142" />
+            <Setter Property="Height" Value="34" />
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Parcelbackground.png" />
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18*"/>
+            <RowDefinition Height="171*"/>
+            <RowDefinition Height="28*"/>
+        </Grid.RowDefinitions>
+
+        <Label Name="AddProprties" Grid.Column="1" Margin="0,36,0,0" Grid.RowSpan="2">
+            <StackPanel    Height="300" Width="250" >
+                <Grid Background="#FFFCEFE6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  x:Name="SenderT"  HorizontalAlignment="Left"  Text="Sender ld:"   Grid.Column="0" Grid.Row="1"  />
+                    <TextBlock Name="Target" HorizontalAlignment="Left"  Text="Target's id:" Grid.Column="0" Grid.Row="2" />
+                    <TextBlock Name="Priority" HorizontalAlignment="Left" Text="Priority:" Grid.Column="0" Grid.Row="3" Height="18"  Width="52"   />
+                    <TextBlock Name="MaxWieght" HorizontalAlignment="Left" Text="Weight:" Grid.Column="0" Grid.Row="4" Height="18" Width="50" />
+
+                    <TextBox  x:Name="IdSender" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="1" />
+                    <ComboBox Name="TargetId" HorizontalAlignment="Left"   Grid.Column="1" Grid.Row="2 "/>
+                    <ComboBox Name="PrioritySelctor"  SelectedItem="PrioritySelctor" Grid.Column="1" Grid.Row="3" Height="34" Width="142" />
+                    <ComboBox x:Name="MaxWieghtSelector"   SelectedItem="widght" Grid.Column="1" Grid.Row="4" Height="34" Width="142"/>
+
+                    <Button Name="AddButton"  Content="Add Parcel" Click="AddParcel_Click" Grid.Row="5" Grid.ColumnSpan="2"  />
+                </Grid>
+            </StackPanel>
+        </Label>
+
+        <Label  x:Name="ParcelDetails"   Content="{Binding myParcel}" Grid.Column="1" Margin="2,-6,227,4" Grid.RowSpan="2" Grid.ColumnSpan="2"  >
+            <Label.ContentTemplate>
+                <DataTemplate>
+                    <StackPanel  HorizontalAlignment="Center" Width="300" Margin="0,0,0,0" >
+                        <Grid Background="#FFFCEFE6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" FontSize="20" FontFamily="Aharoni" Grid.ColumnSpan="2" HorizontalAlignment="Center"> Parcel Details</TextBlock>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" FontSize="16" FontFamily="Segoe UI Black" Text="Id"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Id}" FontSize="16"/>
+
+
+                            <TextBlock Grid.Row="2" FontSize="16" FontFamily="Segoe UI Black" Text="Priority "/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" FontSize="16" Text="{Binding Priority}"/>
+
+                            <TextBlock Grid.Row="3" FontSize="16" FontFamily="Segoe UI Black" Text="Sender details:"/>
+                            <TextBlock Grid.Row="4" Grid.ColumnSpan="2" Text="{Binding Sender}" FontSize="16"/>
+                            <Button Content="Show" FontSize="16" DataContext="{Binding Sender}" Grid.Row="4" VerticalAlignment="Center" Width="61" Grid.Column="1" HorizontalAlignment="Left" Margin="89,0,0,0" Click="Show_Click" Height="29"/>
+
+                            <TextBlock Grid.Row="5" FontSize="16" FontFamily="Segoe UI Black" Text="Target details:"/>
+                            <TextBlock Grid.Row="6" Grid.ColumnSpan="2" Text="{Binding Target}"   FontSize="16"/>
+                            <Button Content="Show" DataContext="{Binding Target}" Grid.Row="6" Width="61" Grid.Column="1" Margin="89,0,0,0" Click="Show_Click" FontSize="16" HorizontalAlignment="Left" Height="28" VerticalAlignment="Center"/>
+
+                            <TextBlock Grid.Row="7" FontSize="16" FontFamily="Segoe UI Black" Text="Drone details:" Height="30" VerticalAlignment="Bottom"/>
+                            <Button x:Name="ButtonDrone"   Grid.Row="7" Grid.Column="1" FontSize="16"    Content="Show Drone" DataContext="{Binding HisDrone}"  MouseDoubleClick="DroneWindows" Height="30" VerticalAlignment="Center" Width="150"/>
+
+                            <TextBlock Grid.Row="8" FontSize="16" FontFamily="Segoe UI Black" Text="Requested"/>
+                            <TextBlock Grid.Row="8" Grid.Column="1" FontSize="14" Text="{Binding Requested}" />
+
+                            <TextBlock Grid.Row="9" FontSize="16" FontFamily="Segoe UI Black" Text="Scheduled"/>
+                            <TextBlock Grid.Row="9" Grid.Column="1" FontSize="14" Text="{Binding Scheduled}" />
+
+                            <TextBlock Grid.Row="10" FontSize="16" FontFamily="Segoe UI Black" Text="PickedUp"/>
+                            <TextBlock Grid.Row="10" Grid.Column="1" FontSize="14" Text="{Binding PickedUp}" />
+
+                            <TextBlock Grid.Row="11" FontSize="16" FontFamily="Segoe UI Black" Text="Delivered"/>
+                            <TextBlock Grid.Row="11" Grid.Column="1" FontSize="14" Text="{Binding Delivered}" />
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </Label.ContentTemplate>
+
+        </Label>
+        <Button  Name="CollectionButtun" Content="Collect Parcel"  Click="CollectParcel_Click" Grid.Column="2" HorizontalAlignment="Left" Margin="38,1,0,0" Grid.Row="2" Height="43" Width="150"/>
+    </Grid>
+</Window>
